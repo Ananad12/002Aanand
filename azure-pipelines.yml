@@ -18,9 +18,11 @@ steps:
     goals: 'clean package -e -X'
 
 - script: |
-    find target/surefire-reports || echo "No test reports found"
+    echo "Listing target directory"
+    ls -l target
+    echo "Listing surefire reports"
+    ls -l target/surefire-reports || echo "No surefire-reports folder"
   displayName: 'List test reports'
-  failOnStderr: false
 
 - task: PublishTestResults@2
   condition: succeededOrFailed()
